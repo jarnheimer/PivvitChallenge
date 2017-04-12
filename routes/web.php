@@ -13,4 +13,10 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('purchases', 'Purchases', [
+        'only' => ['index', 'store'],
+    ]);
+});
+
 Auth::routes();
