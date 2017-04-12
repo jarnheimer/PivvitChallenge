@@ -5,22 +5,21 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
                 <div class="panel-heading">
                     Add new purchase:
 
-                    <form action="{{ route('purchases.store') }}" class="form-horizontal" method="post">
+                    <form id="create" action="{{ route('purchases.store') }}" class="form-horizontal" method="post">
                         <div class="form-group">
-                            <label for="customer_name" class="control-label col-md-2">Customer name</label>
-                            <div class="col-md-2">
+                            <label for="customer_name" class="control-label col-md-3">Customer name</label>
+                            <div class="col-md-3">
                                 <input class="form-control" type="text" id="customer_name" name="customer_name" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="offering_id" class="control-label col-md-2">Offering</label>
-                            <div class="col-md-2">
+                            <label for="offering_id" class="control-label col-md-3">Offering</label>
+                            <div class="col-md-3">
                                 <select name="offering_id" id="offering_id" class="form-control">
+                                    <option>- check offering -</option>
                                     @foreach($offerings as $offering)
                                         <option value="{{ $offering->id }}">{{ $offering->title }} (${{ $offering->price }})</option>
                                     @endforeach
@@ -28,8 +27,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="quantity" class="control-label col-md-2">Quantity</label>
-                            <div class="col-md-2">
+                            <label for="quantity" class="control-label col-md-3">Quantity</label>
+                            <div class="col-md-3">
                                 <input class="form-control" type="number" min="1" step="1" id="quantity" name="quantity" value="1">
                             </div>
                         </div>
@@ -39,12 +38,19 @@
                 <div class="panel-body">
                     Your purchases:
 
-                    <table class="table table-bordered">
+                    <table id="table" class="table table-bordered">
                         <tr>
-                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Price</th>
                             <th>Quantity</th>
+                            <th>Subtotal</th>
                         </tr>
                     </table>
+
+                    Total: $<span id="total">0</span>
+                </div>
+                <div class="panel-footer">
+                    <ul id="errors"></ul>
                 </div>
             </div>
         </div>
