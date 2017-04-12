@@ -51,6 +51,7 @@ $().ready(function () {
         var subTotal = data.offering.price * data.quantity;
         calcTotal(subTotal);
         return '<tr>' +
+            '<td>'+data.id+'</td>' +
             '<td>'+data.offering.title+'</td>' +
             '<td>'+data.offering.price+'</td>' +
             '<td>'+data.quantity+'</td>' +

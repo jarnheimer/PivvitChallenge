@@ -40,6 +40,7 @@
 
                     <table id="table" class="table table-bordered">
                         <tr>
+                            <th>ID</th>
                             <th>Title</th>
                             <th>Price</th>
                             <th>Quantity</th>
