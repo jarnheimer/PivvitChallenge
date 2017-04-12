@@ -13,10 +13,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <!-- Javascript -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
-
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -87,5 +83,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
