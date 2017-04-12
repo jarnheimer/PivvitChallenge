@@ -17,7 +17,8 @@ class Purchases extends Controller
     public function index()
     {
         $userName = auth()->user()->name;
-        $purchases = Purchase::where('customer_name', $userName)
+        $purchases = Purchase::with('offering')
+            ->where('customer_name', $userName)
             ->get();
 
         return Response::api($purchases->toArray());
@@ -40,6 +41,7 @@ class Purchases extends Controller
 
         $purchase = new Purchase($purchaseData);
         $purchase->save();
+        $purchase->load('offering');
 
         return Response::api($purchase->toArray());
     }
