@@ -10,11 +10,11 @@
                 <div class="panel-heading">
                     Add new purchase:
 
-                    <form action="{{ route('purchases.store') }}" class="form-horizontal">
+                    <form action="{{ route('purchases.store') }}" class="form-horizontal" method="post">
                         <div class="form-group">
-                            <label for="name" class="control-label col-md-2">Customer name</label>
+                            <label for="customer_name" class="control-label col-md-2">Customer name</label>
                             <div class="col-md-2">
-                                <input class="form-control" type="text" id="name" name="name" value="{{ Auth::user()->name }}">
+                                <input class="form-control" type="text" id="customer_name" name="customer_name" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -22,7 +22,7 @@
                             <div class="col-md-2">
                                 <select name="offering_id" id="offering_id" class="form-control">
                                     @foreach($offerings as $offering)
-                                        <option value="{{ $offering->offering_id }}">{{ $offering->title }} (${{ $offering->price }})</option>
+                                        <option value="{{ $offering->id }}">{{ $offering->title }} (${{ $offering->price }})</option>
                                     @endforeach
                                 </select>
                             </div>
