@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Response;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Response::macro('api', function ($data, $errors = []) {
+            return Response::make([
+                'success' => empty($errors),
+                'errors'  => (array) $errors,
+                'data'    => (array) $data,
+            ]);
+        });
     }
 
     /**
