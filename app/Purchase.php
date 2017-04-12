@@ -24,6 +24,6 @@ class Purchase extends Model
 
     public function offering()
     {
-        $this->belongsTo(\OfferingSeeder::class);
+        return $this->belongsTo(Offering::class);
     }
 }
